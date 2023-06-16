@@ -1,0 +1,14 @@
+services:
+  openldap:
+    image: osixia/openldap
+    environment:
+      - LDAP_ORGANISATION=SigmaNet
+      - LDAP_DOMAIN=sigmanet.site
+      - LDAP_ADMIN_PASSWORD=Password
+    volumes:
+      - type: bind
+        source: ./ldap/data/slapd/database
+        target: /var/lib/ldap
+      - type: bind
+        source: ./ldap/data/slapd/config
+        target: /etc/ldap/slapd.d
