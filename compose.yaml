@@ -1,5 +1,5 @@
 services:
-  openldap:
+  ldap:
     image: osixia/openldap
     environment:
       - LDAP_ORGANISATION=SigmaNet
@@ -12,3 +12,9 @@ services:
       - type: bind
         source: ./ldap/data/slapd/config
         target: /etc/ldap/slapd.d
+  ldap_admin:
+    image: osixia/phpldapadmin
+    ports: 
+      - "6443:443"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap
