@@ -18,3 +18,17 @@ services:
       - "6443:443"
     environment:
       - PHPLDAPADMIN_LDAP_HOSTS=ldap
+  gitlab:
+    image: gitlab/gitlab-ce
+    ports:
+      - "8080:80"
+    volumes:
+      - type: bind
+        source: ./gitlab/gitlab_home/config
+        target: /etc/gitlab
+      - type: bind
+        source: ./gitlab/gitlab_home/logs
+        target: /var/log/gitlab
+      - type: bind
+        source: ./gitlab/gitlab_home/data
+        target: /var/opt/gitlab
