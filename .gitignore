@@ -3,3 +3,4 @@ gitlab/
 ##!./gitlab/gitlab_home/config/gitlab.rb
 gitlab_pass
 compose.yaml_copy
+.env
